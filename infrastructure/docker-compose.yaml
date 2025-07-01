@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  postgres-server:
+    image: postgres
+    restart: always
+    shm_size: 1Gb
+    environment:
+      POSTGRES_USER: default
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ./init-db:/docker-entrypoint-initdb.d/
+      - exchanger_pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  exchange_pgdata:
