@@ -6,8 +6,6 @@ import arrow.core.right
 import lu.exchange.common.types.base.AggregateRoot
 import lu.exchange.common.types.base.Version
 import lu.exchange.common.types.error.BusinessError
-import lu.exchange.domain.command.CreditCommand
-import lu.exchange.domain.command.DebitCommand
 import java.math.BigDecimal
 
 fun interface AccountIdGenerator {
@@ -43,21 +41,21 @@ class Account(
         }
     }
 
-    fun debit(command: DebitCommand): Either<BusinessError, Account> {
-        if (command.amount <= BigDecimal.ZERO) return NegativeAmountError.left()
-        if (balance.value < command.amount) return InsufficientBalanceError.left()
+    internal fun debit(amount: BigDecimal): Either<BusinessError, Unit> {
+        if (amount <= BigDecimal.ZERO) return NegativeAmountError.left()
+        if (balance.value < amount) return InsufficientBalanceError.left()
 
-        _balance = Balance(_balance.value.minus(command.amount))
+        _balance = Balance(_balance.value.minus(amount))
 
-        return this.right()
+        return Unit.right()
     }
 
-    fun credit(command: CreditCommand): Either<BusinessError, Account> {
-        if (command.amount <= BigDecimal.ZERO) return NegativeAmountError.left()
+    internal fun credit(amount: BigDecimal): Either<BusinessError, Unit> {
+        if (amount <= BigDecimal.ZERO) return NegativeAmountError.left()
 
-        _balance = Balance(_balance.value.plus(command.amount))
+        _balance = Balance(_balance.value.plus(amount))
 
-        return this.right()
+        return Unit.right()
     }
 }
 

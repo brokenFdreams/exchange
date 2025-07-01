@@ -1,7 +1,11 @@
 package lu.exchange.domain
 
-import kotlin.random.Random
+private var lastAccountId = 0L
+
+fun getNextAccountId(): AccountId {
+    return AccountId(++lastAccountId)
+}
 
 class TestAccountIdGenerator : AccountIdGenerator {
-    override fun generate(): AccountId = AccountId(Random.nextLong())
+    override fun generate(): AccountId = getNextAccountId()
 }

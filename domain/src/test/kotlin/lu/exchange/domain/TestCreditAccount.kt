@@ -3,7 +3,6 @@ package lu.exchange.domain
 import io.kotest.assertions.arrow.core.shouldBeLeft
 import io.kotest.assertions.arrow.core.shouldBeRight
 import io.kotest.matchers.equals.shouldBeEqual
-import lu.exchange.domain.command.CreditCommand
 import org.junit.jupiter.api.Test
 import java.math.BigDecimal
 
@@ -22,9 +21,7 @@ class TestCreditAccount {
             balance
         ).shouldBeRight()
 
-        val command = CreditCommand(BigDecimal(10.0))
-
-        account.credit(command).shouldBeRight()
+        account.credit(BigDecimal(10.0)).shouldBeRight()
 
         account.balance.value.shouldBeEqual(BigDecimal(10.0))
     }
@@ -42,9 +39,7 @@ class TestCreditAccount {
             balance
         ).shouldBeRight()
 
-        val command = CreditCommand(BigDecimal(-10.0))
-
-        val actualError = account.credit(command).shouldBeLeft()
+        val actualError = account.credit(BigDecimal(-10.0)).shouldBeLeft()
 
         actualError shouldBeEqual NegativeAmountError
     }

@@ -3,7 +3,6 @@ package lu.exchange.domain
 import io.kotest.assertions.arrow.core.shouldBeLeft
 import io.kotest.assertions.arrow.core.shouldBeRight
 import io.kotest.matchers.equals.shouldBeEqual
-import lu.exchange.domain.command.DebitCommand
 import org.junit.jupiter.api.Test
 import java.math.BigDecimal
 
@@ -22,9 +21,7 @@ class TestDebitAccount {
             balance
         ).shouldBeRight()
 
-        val command = DebitCommand(BigDecimal(10.0))
-
-        account.debit(command).shouldBeRight()
+        account.debit(BigDecimal(10.0)).shouldBeRight()
 
         account.balance.value.shouldBeEqual(BigDecimal.ZERO)
     }
@@ -42,9 +39,7 @@ class TestDebitAccount {
             balance
         ).shouldBeRight()
 
-        val command = DebitCommand(BigDecimal(-10.0))
-
-        val actualError = account.debit(command).shouldBeLeft()
+        val actualError = account.debit(BigDecimal(-10.0)).shouldBeLeft()
 
         actualError shouldBeEqual NegativeAmountError
     }
@@ -62,9 +57,7 @@ class TestDebitAccount {
             balance
         ).shouldBeRight()
 
-        val command = DebitCommand(BigDecimal(10.0))
-
-        val actualError = account.debit(command).shouldBeLeft()
+        val actualError = account.debit(BigDecimal(10.0)).shouldBeLeft()
 
         actualError shouldBeEqual InsufficientBalanceError
     }
