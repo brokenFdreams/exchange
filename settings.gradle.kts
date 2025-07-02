@@ -8,6 +8,6 @@ include("rest")
 include("persistence-postgresql")
 include("application")
 include("common")
+include("exchange-rate-provider-in-memory")
 
 rootProject.name = "Exchange"
-
