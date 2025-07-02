@@ -25,7 +25,7 @@ object Libs {
 
     // Spring
     const val SPRING_BOOT_STARTER_WEB = "org.springframework.boot:spring-boot-starter-web:${LibsVersions.SPRING_BOOT}"
-    const val SPRING_BOOT_STARTER_JDBC = "org.springframework.boot:spring-boot-starter-jdbc:${LibsVersions.SPRING_BOOT}"
+    const val SPRING_BOOT_STARTER_JDBC = "org.springframework.boot:spring-boot-starter-data-jdbc:${LibsVersions.SPRING_BOOT}"
     const val SPRING_BOOT_STARTER_LOGGING =
         "org.springframework.boot:spring-boot-starter-logging:${LibsVersions.SPRING_BOOT}"
     const val SPRING_BOOT_STARTER_TEST = "org.springframework.boot:spring-boot-starter-test:${LibsVersions.SPRING_BOOT}"

@@ -18,6 +18,5 @@ dependencies {
     testImplementation(project(":common"))
 
     //test Fixtures
-    testFixturesImplementation(project(":common"))
     testFixturesImplementation(Libs.ARROW)
 }
