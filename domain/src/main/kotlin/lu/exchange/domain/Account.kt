@@ -23,7 +23,7 @@ class Account(
 
     companion object {
         fun create(
-            testAccountIdGenerator: AccountIdGenerator,
+            accountIdGenerator: AccountIdGenerator,
             ownerId: Long,
             currency: String,
             balance: BigDecimal
@@ -32,7 +32,7 @@ class Account(
             if (balance < BigDecimal.ZERO) return NegativeBalanceError.left()
 
             return Account(
-                accountId = testAccountIdGenerator.generate(),
+                accountId = accountIdGenerator.generate(),
                 ownerId = OwnerId(ownerId),
                 currency = Currency.valueOf(currency),
                 _balance = Balance(balance),
