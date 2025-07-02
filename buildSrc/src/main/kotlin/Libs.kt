@@ -1,14 +1,14 @@
 object LibsVersions {
-    const val SPRING_BOOT = "3.4.2"
+    const val SPRING_BOOT = "3.5.3"
     const val ARROW = "2.1.2"
-    const val JACKSON = "2.18.2"
-    const val SWAGGER = "3.0.0"
+    const val JACKSON = "2.19.1"
+    const val SWAGGER = "2.8.9"
     const val POSTGRESQL = "42.7.5"
-    const val LIQUIBASE = "4.31.0"
+    const val LIQUIBASE = "4.32.0"
     const val KOTEST = "5.9.1"
     const val KOTEST_ARROW = "2.0.0"
     const val JUNIT = "5.13.2"
-    const val TESTCONTAINERS = "1.20.4"
+    const val TESTCONTAINERS = "1.21.3"
 }
 
 object Libs {
@@ -35,8 +35,7 @@ object Libs {
     const val LIQUIBASE = "org.liquibase:liquibase-core:${LibsVersions.LIQUIBASE}"
 
     // Swagger
-    const val SWAGGER = "io.springfox:springfox-boot-starter:${LibsVersions.SWAGGER}"
-    const val SWAGGER_UI = "io.springfox:springfox-swagger-ui:${LibsVersions.SWAGGER}"
+    const val SWAGGER = "org.springdoc:springdoc-openapi-starter-webmvc-ui:${LibsVersions.SWAGGER}"
 
     //Test
     const val JUNIT_PARAMS = "org.junit.jupiter:junit-jupiter-params:${LibsVersions.JUNIT}"

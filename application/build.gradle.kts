@@ -25,7 +25,6 @@ dependencies {
     implementation(Libs.SPRING_BOOT_STARTER_JDBC)
     // swagger
     implementation(Libs.SWAGGER)
-    implementation(Libs.SWAGGER_UI)
     // jackson
     implementation(Libs.JACKSON_KOTLIN)
     implementation(Libs.JACKSON_DATABIND)

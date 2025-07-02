@@ -7,17 +7,33 @@ import lu.exchange.domain.Balance
 import lu.exchange.domain.Currency
 import lu.exchange.domain.OwnerId
 import org.springframework.data.annotation.Id
+import org.springframework.data.jdbc.repository.query.Modifying
+import org.springframework.data.jdbc.repository.query.Query
+import org.springframework.data.relational.core.mapping.Table
 import org.springframework.data.repository.CrudRepository
+import org.springframework.data.repository.query.Param
 import java.math.BigDecimal
 
-interface JdbcAccountRepository : CrudRepository<AccountEntity, Long>
+interface JdbcAccountRepository : CrudRepository<AccountEntity, Long> {
+    @Modifying
+    @Query(
+        """
+        INSERT INTO account (id, owner_id, currency, balance, version)
+             VALUES (:#{#entity.id}, :#{#entity.ownerId}, :#{#entity.currency}, :#{#entity.balance}, :#{#entity.version})
+             """
+    )
+    fun insert(@Param("entity") entity: AccountEntity)
 
+}
+
+@Table("account")
 data class AccountEntity(
-    @Id val id: Long,
+    @Id
+    val id: Long,
     val ownerId: Long,
     val currency: String,
     val balance: BigDecimal,
-    val version: Long
+    val version: Long,
 )
 
 fun AccountEntity.toDomain() = Account(

@@ -47,6 +47,7 @@ class Account(
 
         _balance = Balance(_balance.value.minus(amount))
 
+        nextVersion()
         return Unit.right()
     }
 
@@ -55,6 +56,7 @@ class Account(
 
         _balance = Balance(_balance.value.plus(amount))
 
+        nextVersion()
         return Unit.right()
     }
 }

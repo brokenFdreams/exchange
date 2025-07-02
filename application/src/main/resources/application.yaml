@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/exchange
+    username: exchange
+    password: exchange_password
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.yaml

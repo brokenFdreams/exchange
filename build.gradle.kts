@@ -1,7 +1,5 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
-val parentProjectDir = projectDir
-
 plugins {
     id(Plugins.KOTLIN) version PluginsVersions.KOTLIN apply false
     id(Plugins.UPDATE_DEPENDENCIES) version PluginsVersions.UPDATE_DEPENDENCIES
@@ -26,7 +24,6 @@ subprojects {
         plugin("jacoco")
         plugin(Plugins.JAVA_TEST_FIXTURES)
         plugin(Plugins.UPDATE_DEPENDENCIES)
-//        plugin(Plugins.OWASP_DEPENDENCIES)
     }
 
     repositories {
