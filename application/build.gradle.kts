@@ -12,6 +12,7 @@ dependencies {
     implementation(project(":usecase"))
     implementation(project(":rest"))
     implementation(project(":persistence-postgresql"))
+    implementation(project(":exchange-rate-provider-in-memory"))
     implementation(project(":common"))
     // kotlin
     implementation(Libs.KOTLIN_JDK8)
@@ -21,6 +22,7 @@ dependencies {
     // spring
     implementation(Libs.SPRING_BOOT_STARTER_WEB)
     implementation(Libs.SPRING_BOOT_STARTER_LOGGING)
+    implementation(Libs.SPRING_BOOT_STARTER_JDBC)
     // swagger
     implementation(Libs.SWAGGER)
     implementation(Libs.SWAGGER_UI)
@@ -35,6 +37,7 @@ dependencies {
     testImplementation(testFixtures(project(":usecase")))
     testImplementation(testFixtures(project(":rest")))
     testImplementation(testFixtures(project(":persistence-postgresql")))
+    testImplementation(testFixtures(project(":exchange-rate-provider-in-memory")))
     testImplementation(testFixtures(project(":common")))
     testImplementation(Libs.KOTEST_JUNIT)
     testImplementation(Libs.KOTEST_ARROW)
@@ -51,6 +54,7 @@ dependencies {
     testFixturesImplementation(testFixtures(project(":usecase")))
     testFixturesImplementation(testFixtures(project(":rest")))
     testFixturesImplementation(testFixtures(project(":persistence-postgresql")))
+    testFixturesImplementation(testFixtures(project(":exchange-rate-provider-in-memory")))
     testFixturesImplementation(testFixtures(project(":common")))
     testFixturesImplementation(Libs.ARROW)
     testFixturesImplementation(Libs.LIQUIBASE)
