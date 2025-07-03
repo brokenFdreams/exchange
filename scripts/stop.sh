@@ -5,6 +5,8 @@ echo "Stopping application..."
 cd ../infrastructure || exit 1
 docker-compose down
 
+cd .. || exit 1
+
 if [ -f "application.pid" ]; then
     PID=$(cat application.pid)
     if ps -p "$PID" > /dev/null; then
