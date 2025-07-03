@@ -33,40 +33,6 @@ dependencies {
     implementation(Libs.JACKSON_KOTLIN)
     implementation(Libs.JACKSON_DATABIND)
     implementation(Libs.JACKSON_JSR)
-
-    // test
-    testRuntimeOnly(Libs.JUNIT_ENGINE)
-    testImplementation(testFixtures(project(":domain")))
-    testImplementation(testFixtures(project(":usecase")))
-    testImplementation(testFixtures(project(":rest")))
-    testImplementation(testFixtures(project(":persistence-postgresql")))
-    testImplementation(testFixtures(project(":exchange-rate-provider-in-memory")))
-    testImplementation(testFixtures(project(":common")))
-    testImplementation(Libs.KOTEST_JUNIT)
-    testImplementation(Libs.KOTEST_ARROW)
-    testImplementation(Libs.JUNIT_PARAMS)
-    testImplementation(Libs.JUNIT)
-    testImplementation(Libs.TESTCONTAINERS_POSTGRESQL)
-    testImplementation(Libs.TESTCONTAINERS_JUNIT)
-    testImplementation(Libs.SPRING_BOOT_STARTER_JDBC)
-    testImplementation(Libs.SPRING_BOOT_STARTER_TEST) {
-        exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
-    }
-
-    testFixturesImplementation(testFixtures(project(":domain")))
-    testFixturesImplementation(testFixtures(project(":usecase")))
-    testFixturesImplementation(testFixtures(project(":rest")))
-    testFixturesImplementation(testFixtures(project(":persistence-postgresql")))
-    testFixturesImplementation(testFixtures(project(":exchange-rate-provider-in-memory")))
-    testFixturesImplementation(testFixtures(project(":common")))
-    testFixturesImplementation(Libs.ARROW)
-    testFixturesImplementation(Libs.LIQUIBASE)
-    testFixturesImplementation(Libs.TESTCONTAINERS_POSTGRESQL)
-    testFixturesImplementation(Libs.TESTCONTAINERS_JUNIT)
-    testFixturesImplementation(Libs.SPRING_BOOT_STARTER_JDBC)
-    testImplementation(Libs.SPRING_BOOT_STARTER_TEST) {
-        exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
-    }
 }
 
 tasks.build {
