@@ -24,3 +24,7 @@ All scripts are in the scripts folder.
 
 ### Stop
 "./stop.sh" to stop containers and to kill java process
+
+
+### API
+Swagger url: http://localhost:8080/swagger-ui/index.html
