@@ -4,6 +4,7 @@ plugins {
     id(Plugins.SPRING_BOOT) version PluginsVersions.SPRING_BOOT
     id(Plugins.SPRING_DEPENDENCY_MANAGEMENT) version PluginsVersions.SPRING_DEPENDENCY_MANAGEMENT
     id(Plugins.SPRING_KOTLIN) version PluginsVersions.SPRING_KOTLIN
+    id(Plugins.JIB) version PluginsVersions.JIB
 }
 
 dependencies {
@@ -23,6 +24,9 @@ dependencies {
     implementation(Libs.SPRING_BOOT_STARTER_WEB)
     implementation(Libs.SPRING_BOOT_STARTER_LOGGING)
     implementation(Libs.SPRING_BOOT_STARTER_JDBC)
+    // database
+    implementation(Libs.POSTGRESQL)
+    implementation(Libs.LIQUIBASE)
     // swagger
     implementation(Libs.SWAGGER)
     // jackson
@@ -67,4 +71,18 @@ dependencies {
 
 tasks.build {
     dependsOn("bootJar")
+}
+
+jib {
+    from {
+        image = "eclipse-temurin:21-jre-alpine"
+    }
+    to {
+        image = "exchange"
+        tags = setOf("latest")
+    }
+    container {
+        mainClass = "lu.exchange.ExchangeApplicationKt"
+        ports = listOf("8080")
+    }
 }
