@@ -11,7 +11,7 @@ services:
       SPRING_DATASOURCE_USERNAME: exchange
       SPRING_DATASOURCE_PASSWORD: exchange_password
     ports:
-      - "8080:8080"
+      - "8081:8080"
 
   postgres-server:
     image: postgres

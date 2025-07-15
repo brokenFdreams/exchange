@@ -19,11 +19,20 @@ interface JdbcAccountRepository : CrudRepository<AccountEntity, Long> {
     @Query(
         """
         INSERT INTO account (id, owner_id, currency, balance, version)
-             VALUES (:#{#entity.id}, :#{#entity.ownerId}, :#{#entity.currency}, :#{#entity.balance}, :#{#entity.version})
-             """
+        VALUES (:#{#account.id}, :#{#account.ownerId}, :#{#account.currency}, :#{#account.balance}, :#{#account.version})
+    """
     )
-    fun insert(@Param("entity") entity: AccountEntity)
+    fun insert(@Param("account") account: AccountEntity)
 
+    @Modifying
+    @Query(
+        """
+        UPDATE account 
+        SET balance = :#{#account.balance}, version = :#{#account.version}
+        WHERE id = :#{#account.id} AND version = :oldVersion
+    """
+    )
+    fun update(@Param("account") account: AccountEntity, @Param("oldVersion") oldVersion: Long): Boolean
 }
 
 @Table("account")

@@ -10,6 +10,7 @@ import lu.exchange.domain.AccountId
 import lu.exchange.domain.provider.AccountNotFoundError
 import lu.exchange.domain.provider.AccountPersister
 import lu.exchange.domain.provider.AccountProvider
+import org.springframework.dao.OptimisticLockingFailureException
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Repository
 
@@ -26,7 +27,9 @@ class AccountRepository(
         if (account.version == Version.new()) {
             jdbcAccountRepository.insert(account.toEntity())
         } else {
-            jdbcAccountRepository.save(account.toEntity())
+            if (!jdbcAccountRepository.update(account.toEntity(), account.version.previous().toLongValue())) {
+                throw Exception("Version mismatch")
+            }
         }
     }
 }
